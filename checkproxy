@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+import os,sys
+import pycurl
+#import sendmail
+
+def header(buf):
+	sys.stderr.write(buf)
+
+def body(buf):
+	pass
+
+a=r"C:/Users/Administrator/Desktop/kill_cc.bat"
+a=os.path.sep.join(a.split(r'/'))
+b=r"C:/Users/Administrator/Desktop/run1-6.bat"
+b=os.path.sep.join(b.split(r'/'))
+URL="http://www.baidu.com"
+c=pycurl.Curl()
+c.setopt(pycurl.URL,URL)
+c.setopt(pycurl.CONNECTTIMEOUT,15)
+c.setopt(pycurl.TIMEOUT,15)
+c.setopt(pycurl.NOPROGRESS,1)
+c.setopt(pycurl.HEADERFUNCTION, header) #头信息调用header函数
+c.setopt(pycurl.WRITEFUNCTION, body)    #body信息调用body函数
+#times=0
+#c.setopt(pycurl.VERBOSE,0)
+port=[50001,50002,50003,50004,50005,50006]
+for p in port:
+	c.setopt(pycurl.PROXY,'http://10.2.2.251:'+str(p))
+#for i in range(5):
+	try:
+		c.perform()
+	except 	Exception,e:
+		print "connection error:"+str(e)
+		c.close()
+		os.system('python sendmail.py')
+	HTTP_CODE=c.getinfo(c.HTTP_CODE)
+	print (HTTP_CODE)
+
+	if (HTTP_CODE==200):
+		pass
+	else:
+		os.system(a)
+		os.system(b)
+#		os.system('python sendmail.py')
+c.close()	
+		
+#if (times>=2):
+#	os.system('python sendmail.py')
+#else:
+#	pass
+	

@@ -1,0 +1,10 @@
+root@10.1.4.186's password: p@ssw0rd
+
+Last login: Mon Jun 13 14:27:21 2016 from 10.1.4.222
+]0;root@localhost:~[?1034h[root@localhost ~]# tar -czf /dengminhui.tar.gz /dengminhui
+tar -czf /dengminhui.tar.gz /dengminhui
+tar: Removing leading `/' from member names
+]0;root@localhost:~[root@localhost ~]# exit
+root@10.1.4.186's password: p@ssw0rd
+
+dengminhui.tar.gz                               0%    0     0.0KB/s   --:-- ETAdengminhui.tar.gz                             100%  116     0.1KB/s   00:00    
